@@ -1,0 +1,82 @@
+:root {
+  --primary-color: #425b84;
+  --secondary-color: #5b7bb4;
+  --max-width: 1100px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: normal 1rem/1.5 "Arial", sans-serif;
+  background: var(--primary-color);
+  color: #fff;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+#main-header {
+  background: var(--secondary-color);
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.3rem;
+}
+
+#timeline ul {
+  background: var(--primary-color);
+  padding: 50px 0;
+}
+
+/* Create Line */
+#timeline ul li {
+  list-style: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding: 50px 0 0 0;
+  background: #fff;
+}
+
+/* Boxes */
+#timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  padding: 1rem;
+  background: var(--secondary-color);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Right Side */
+#timeline ul li:nth-child(odd) div {
+  left: 40px;
+}
+
+/* Left Side */
+#timeline ul li:nth-child(even) div {
+  left: -436px;
+}
+
+/* Dots signifying the point on the timeline */
+/* This square is technically in the same area that the box its correlated with. However, that box has been moved and therefore it looks as if this 25x25 box was just located out of nowhere. */
+#timeline ul li:after {
+  content: "";
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 25px;
+  height: 25px;
+  background: var(--secondary-color);
+  align-items: center;
+}

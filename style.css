@@ -2,7 +2,6 @@
   --primary-color: #425b84;
   --secondary-color: #5b7bb4;
   --max-width: 1100px;
-  --max-width-ipad: 800px;
 }
 
 * {
@@ -59,16 +58,20 @@ h1 {
   background: var(--secondary-color);
   /*all, in transitions, means that all changes to the box will have the properties to the left (.4s ease...) */
   transition: all 0.4s ease-in-out;
+  /* visibility: hidden;
+  opacity: 0; */
 }
 
 /* Right Side */
 #timeline ul li:nth-child(odd) div {
   left: 40px;
+  transform: translate(200px, 0);
 }
 
 /* Left Side */
 #timeline ul li:nth-child(even) div {
   left: -436px;
+  transform: translate(-200px, 0);
 }
 
 /* Dots signifying the point on the timeline */

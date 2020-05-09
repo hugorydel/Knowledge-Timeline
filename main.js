@@ -20,5 +20,7 @@ const run = () => {
 };
 
 // Events
+// The above functions are set off on
 window.addEventListener("load", run);
 window.addEventListener("resize", run);
+window.addEventListener("scroll", run);

@@ -58,8 +58,8 @@ h1 {
   background: var(--secondary-color);
   /*all, in transitions, means that all changes to the box will have the properties to the left (.4s ease...) */
   transition: all 0.4s ease-in-out;
-  /* visibility: hidden;
-  opacity: 0; */
+  visibility: hidden;
+  opacity: 0;
 }
 
 /* Right Side */
@@ -85,7 +85,7 @@ h1 {
   bottom: 0;
   width: 25px;
   height: 25px;
-  background: var(--secondary-color);
+  background: inherit;
   transform: translateX(-50%);
   border-radius: 50%;
   transition: background 0.5s ease-in-out;
@@ -115,6 +115,18 @@ h1 {
   right: -16px;
   border-width: 8px 0 8px 16px;
   border-color: transparent var(--secondary-color);
+}
+
+/* Show Boxes */
+#timeline ul li.show div {
+  transform: none;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Change point colors */
+#timeline ul li.show::after {
+  background: var(--secondary-color);
 }
 
 @media (max-width: 900px) {

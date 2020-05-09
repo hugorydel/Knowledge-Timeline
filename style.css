@@ -2,6 +2,7 @@
   --primary-color: #425b84;
   --secondary-color: #5b7bb4;
   --max-width: 1100px;
+  --max-width-ipad: 800px;
 }
 
 * {
@@ -39,6 +40,7 @@ h1 {
 }
 
 /* Create Line */
+/* Also, the li pushes everything to is to create a line */
 #timeline ul li {
   list-style: none;
   position: relative;
@@ -55,6 +57,7 @@ h1 {
   width: 400px;
   padding: 1rem;
   background: var(--secondary-color);
+  /*all, in transitions, means that all changes to the box will have the properties to the left (.4s ease...) */
   transition: all 0.4s ease-in-out;
 }
 
@@ -69,14 +72,72 @@ h1 {
 }
 
 /* Dots signifying the point on the timeline */
-/* This square is technically in the same area that the box its correlated with. However, that box has been moved and therefore it looks as if this 25x25 box was just located out of nowhere. */
-#timeline ul li:after {
+/* This square is technically in the same area as is the 400px box. However, that box has been moved and therefore it looks as if this 25x25 box was just there out of nowhere. */
+#timeline ul li::after {
   content: "";
   position: absolute;
   display: flex;
+  /*Why we do the weird 50% left and -50% translateX check absolute positioning https://www.freecodecamp.org/news/how-to-center-things-with-style-in-css-dc87b7542689/ */
+  left: 50%;
   bottom: 0;
   width: 25px;
   height: 25px;
   background: var(--secondary-color);
-  align-items: center;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  transition: background 0.5s ease-in-out;
+}
+
+/* XXX Before and After pseudoselectors aren't really different. You would think that they would come before for example (as below) the div, but no, they actually come before or after the content of the div, so it really doesn't matter what you do (just use one instance of the selector per element).*/
+
+/* Arrows' Base */
+#timeline div::before {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Right Side Arrows */
+#timeline ul li:nth-child(odd) div:before {
+  left: -16px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent var(--secondary-color);
+}
+
+/* Left Side Arrows */
+#timeline ul li:nth-child(even) div::before {
+  right: -16px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent var(--secondary-color);
+}
+
+@media (max-width: 900px) {
+  #timeline ul li div {
+    width: 250px;
+  }
+  /* Left Side */
+  #timeline ul li:nth-child(even) div {
+    left: -286px;
+  }
+}
+
+@media (max-width: 600px) {
+  #timeline ul li {
+    margin-left: 20px;
+  }
+  #timeline ul li div {
+    width: calc(100vw - 90px);
+  }
+  #timeline ul li:nth-child(even) div {
+    left: 40px;
+  }
+  /* Right Side Arrows */
+  #timeline ul li:nth-child(even) div:before {
+    left: -16px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent var(--secondary-color);
+  }
 }
